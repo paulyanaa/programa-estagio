@@ -1,9 +1,15 @@
 <?php
-    $sNome = htmlspecialchars($_POST["nome"]);
-    $sCpf = htmlspecialchars($_POST["cpf"]);
-    $sTelefone = htmlspecialchars($_POST["telefone"]);
-    $sEmail = htmlspecialchars($_POST["email"]);
+    session_start();
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $_SESSION['cpf'] = htmlspecialchars($_POST['cpf']);
+        $_SESSION['telefone'] = htmlspecialchars($_POST['telefone']);
+        $_SESSION['email'] = htmlspecialchars($_POST['email']);
+    }
 
+    $sNome = $_SESSION['nome'];
+    $sCpf = $_SESSION['cpf'];
+    $sTelefone = $_SESSION['telefone'];
+    $sEmail = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -25,14 +31,14 @@
     <br>
     <section class="container-form">
         <h3>Registro do Usuário</h3>
+
         <form action="registro.php" method="post">
-            <input type="hidden" name="nome" value="<?php echo $sNome; ?>">
 
             <label for="login">Login</label><br>
             <input type="text" id="login" name="login"  placeholder="Digite o seu login" required><br>
 
             <label for="senha">Senha</label><br>
-            <input type="password" id="senha" name="senha"  placeholder="Digite o seu senha" required><br>
+            <input type="password" id="senha" name="senha"  placeholder="Digite a sua senha" required><br>
 
             <button type="submit">Registrar</button>
         </form>

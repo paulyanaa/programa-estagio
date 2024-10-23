@@ -1,5 +1,9 @@
 <?php
-    $sNome = htmlspecialchars($_GET['nome']);
+    session_start();
+
+    $_SESSION['nome'] = htmlspecialchars($_GET['nome']);
+
+    $sNome = $_SESSION['nome'];
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +18,6 @@
     <section class="container-form">
 
         <form action="curriculo.php" method="post">
-
-            <input type="hidden" name="nome" value="<?php echo $sNome; ?>">
 
             <label for="cpf">CPF:</label>
             <input type="text" id="cpf" name="cpf"  placeholder="Digite o seu CPF" required>
