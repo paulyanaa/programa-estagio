@@ -1,23 +1,13 @@
 <?php
+require_once "ManipulaSessoes.php";
 session_start();
-
-if(!isset($_SESSION['aUsuariosCadastrados'])){
-    $_SESSION['aUsuariosCadastrados'] = [];
-}
-
 if($_SERVER['REQUEST_METHOD']=='POST') {
     $nome = $_POST['nome'];
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    $aUsuariosCadastrados = [
-        'nome' => $nome,
-        'usuario' => $usuario,
-        'senha' => $senha
-    ];
-    $_SESSION['aUsuariosCadastrados'][] = $aUsuariosCadastrados;
-    header('Location: login.php');
-}
+    (new ManipulaSessoes)->salvaUsuario($nome, $usuario, $senha);
+    header('Location: login.php');}
 
 ?>
 

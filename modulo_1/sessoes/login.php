@@ -1,20 +1,13 @@
 <?php
+require_once "ManipulaSessoes.php";
 session_start();
+
 if($_SERVER['REQUEST_METHOD']=='POST') {
     $sUuarioInserido = $_POST['usuario'];
     $sSenhaInserida = $_POST['senha'];
 
-    $aUsuarioAtual = end($_SESSION['aUsuariosCadastrados']);
-    $sUsuario = $aUsuarioAtual['usuario'];
-    $sSenha = $aUsuarioAtual['senha'];
-
-    if(($sUsuario=== $sUuarioInserido) && ($sSenha === $sSenhaInserida) ) {
-        header('Location: geral.php');
-    }else{
-        echo '<h1>Usuário ou senha incorreto.</h1>';
-    }
+    (new ManipulaSessoes())->autenticaLogin($sUuarioInserido, $sSenhaInserida);
 };
-
 ?>
 
 <!DOCTYPE html>
