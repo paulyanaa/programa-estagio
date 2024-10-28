@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+
+# Captura URLs do tipo /controller/method/param1/param2
+RewriteRule ^([^/]+)/([^/]+)/?(.*)$ iindex.php?controller=$1&method=$2&params=$3 [QSA,L]
