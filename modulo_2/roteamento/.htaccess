@@ -1,5 +1,7 @@
-RewriteEngine On
-RewriteBase /
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)$ index.php?parametro=$1 [QSA,L]
+</IfModule>
 
-# Captura URLs do tipo /controller/method/param1/param2
-RewriteRule ^([^/]+)/([^/]+)/?(.*)$ iindex.php?controller=$1&method=$2&params=$3 [QSA,L]
