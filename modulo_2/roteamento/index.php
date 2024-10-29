@@ -1,10 +1,15 @@
 <?php
 require 'autoload.php';
 
-var_dump($_REQUEST);
-$aRequisicao = isset($_REQUEST['parametro'])
-    ? explode('/', $_REQUEST['parametro'])
-    : ['empresa', 'index'];
+var_dump($_SERVER['REQUEST_URI']);
+
+$teste = explode('/', $_SERVER['REQUEST_URI']);
+$aRequisicao = [$teste[3],$teste[4]];
+var_dump($aRequisicao);
+
+//$aRequisicao = isset($_REQUEST['parametro'])
+//    ? explode('/', $_REQUEST['parametro'])
+//    : ['empresa', 'index'];
 
 
 $oNomeController = ucfirst($aRequisicao[0]) . 'Controller';
