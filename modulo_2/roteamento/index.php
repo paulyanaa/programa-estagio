@@ -3,8 +3,8 @@ require 'autoload.php';
 
 var_dump($_SERVER['REQUEST_URI']);
 
-$teste = explode('/', $_SERVER['REQUEST_URI']);
-$aRequisicao = [$teste[3],$teste[4]];
+$aUriSeparada = explode('/', $_SERVER['REQUEST_URI']);
+$aRequisicao = [$aUriSeparada[3],$aUriSeparada[4]];
 var_dump($aRequisicao);
 
 //$aRequisicao = isset($_REQUEST['parametro'])
