@@ -2,7 +2,7 @@
 
 class EmpresaController {
 
-    public function listarEmpresas() {
+    public function indexEmpresa() {
         echo 'Lista todas as empresas.';
     }
 

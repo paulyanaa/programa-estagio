@@ -1,6 +1,6 @@
 <?php
 class PessoaController {
-    public function listarPessoas() {
+    public function indexEmpresa() {
         echo 'Lista todas as pessoas.';
     }
 

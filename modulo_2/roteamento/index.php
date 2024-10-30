@@ -3,13 +3,13 @@ require 'autoload.php';
 
 var_dump($_SERVER['REQUEST_URI']);
 
-$aUriSeparada = explode('/', $_SERVER['REQUEST_URI']);
-$aRequisicao = [$aUriSeparada[3],$aUriSeparada[4]];
-var_dump($aRequisicao);
+//$aUriSeparada = explode('/', $_SERVER['REQUEST_URI']);
+//$aRequisicao = [$aUriSeparada[3],$aUriSeparada[4]];
+//var_dump($aRequisicao);
 
-//$aRequisicao = isset($_REQUEST['parametro'])
-//    ? explode('/', $_REQUEST['parametro'])
-//    : ['empresa', 'index'];
+$aRequisicao = isset($_REQUEST['parametro'])
+    ? explode('/', $_REQUEST['parametro'])
+    : ['empresa', 'index'];
 
 
 $oNomeController = ucfirst($aRequisicao[0]) . 'Controller';
