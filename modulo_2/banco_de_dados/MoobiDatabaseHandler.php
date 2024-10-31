@@ -18,13 +18,17 @@ class MoobiDatabaseHandler {
 
     public function query($sSql, $aParametros = []) {
         try {
-            $PDOStatement = $this->pdo->prepare($sSql);
-            foreach ($aParametros as $sParametro => &$sValor) {
-                $PDOStatement->bindParam($sParametro, $sValor);
+            if($aParametros != [] ){
+                $PDOStatement = $this->pdo->prepare($sSql);
+                foreach ($aParametros as $sParametro => &$sValor) {
+                    $PDOStatement->bindParam($sParametro, $sValor);
+                }
+                $PDOStatement->execute();
+                return $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
+            }else{
+                $PDOStatement = $this->pdo->query($sSql);
+                return $PDOStatement -> fetchAll(PDO::FETCH_ASSOC);
             }
-            $PDOStatement->execute();
-            return $PDOStatement->fetchAll(PDO::FETCH_ASSOC);
-
         } catch (PDOException $e) {
             echo "Erro na consulta: " . $e->getMessage();
             return false;
@@ -36,7 +40,7 @@ class MoobiDatabaseHandler {
         try {
             $PDOStatement = $this->pdo->prepare($sSql);
             foreach ($aParametros as $sParametro => &$sValor) {
-                $PDOStatement->bindParam($sParametro, $sValor);
+                $PDOStatement->bindValue($sParametro, $sValor);
             }
             return $PDOStatement->execute();
 
