@@ -26,8 +26,10 @@ $aParametros2 = [
     5 => 'feijoada.jpg'
 ];
 
+$oBanco->execute($sSql2, $aParametros2);
+
 
 $sSql3 = "SELECT * FROM produtos";
 //$oBanco->startTransaction();
-var_dump($oBanco->query($sSql3));
+//var_dump($oBanco->query($sSql3));
 //$oBanco->endTransaction();
