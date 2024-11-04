@@ -90,6 +90,16 @@ class EmpresaModel
         return $this->sTelefone;
     }
 
+    public function getEnderecoCompleto():string{
+        $enderecoCompleto = "{$this->sLogradouro}, {$this->sBairro}, {$this->sCidade}, {$this->sEstado}, {$this->sCep}";
+        return $enderecoCompleto;
+    }
+
+    public function getContatoCompleto():string{
+        $contatoCompleto = "E-mail: {$this->sEmail}" . PHP_EOL ."Telefone: {$this->sTelefone}";
+        return $contatoCompleto;
+    }
+
 
 
 

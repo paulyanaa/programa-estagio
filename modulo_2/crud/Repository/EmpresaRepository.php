@@ -16,9 +16,20 @@ class EmpresaRepository
     {
         $sSql = "SELECT * FROM empresas";
         $aEmpresas = $this->oBancoEmpresa->query($sSql);
-        return $aEmpresas;
-    }
 
+        $aDadosEmpresas = array_map(function($empresa){
+            return $this->formarObjeto($empresa);
+        }, $aEmpresas);
+        return $aDadosEmpresas;
+    }
+    public function buscaEmpresa($id): EmpresaModel
+    {
+        $sSql = "SELECT * FROM empresas WHERE id_empresa = $id";
+        $aEmpresas = $this->oBancoEmpresa->query($sSql);
+
+        $oEmpresa = $this->formarObjeto($aEmpresas);
+        return $oEmpresa;
+    }
     public function insereEmpresa(EmpresaModel $empresa):void{
         $sSql = "INSERT INTO empresas (id, nome, email, cnpj, cep, estado, cidade, bairro, logradouro, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $aParametros = [
@@ -49,6 +60,46 @@ class EmpresaRepository
         $this->oBancoEmpresa->execute($sSql, $aParametro);
         $this->oBancoEmpresa->endTransaction();
     }
+
+    public function atualizaEmpresa(EmpresaModel $empresa):void{
+        $sSql = "UPDATE produtos SET nome = ?, email = ?, cnpj = ?, cep = ?, estado = ?, cidade = ?, bairro = ?, logradouro = ?, telefone = ? WHERE id = ?";
+        $aParametros = [
+
+            1 => $empresa->getSNome(),
+            2 => $empresa->getSEmail(),
+            3 => $empresa->getSCnpj(),
+            4 => $empresa->getSCep(),
+            5 => $empresa->getSEstado(),
+            6 => $empresa->getSCidade(),
+            7 => $empresa->getSBairro(),
+            8 => $empresa->getSLogradouro(),
+            9 => $empresa->getSTelefone(),
+            10 => $empresa->getIId()
+        ];
+        $this->oBancoEmpresa->startTransaction();
+        $this->oBancoEmpresa->execute($sSql, $aParametros);
+        $this->oBancoEmpresa->endTransaction();
+
+    }
+
+    private function formarObjeto($empresa):EmpresaModel
+    {
+        $empresaObjeto = new EmpresaModel(
+            $empresa['id'],
+            $empresa['nome'],
+            $empresa['email'],
+            $empresa['cnpj'],
+            $empresa['cep'],
+            $empresa['estado'],
+            $empresa['cidade'],
+            $empresa['bairro'],
+            $empresa['logradouro'],
+            $empresa['telefone']
+        );
+
+        return $empresaObjeto;
+    }
+
 
 
 
