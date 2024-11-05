@@ -1,0 +1,113 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container-table, .container-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px; /* Para a lista */
+    margin: auto;
+}
+
+.container-form {
+    max-width: 600px; /* Para o formulário */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Para incluir padding e bordas no tamanho total */
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Azul */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Faz o botão ocupar toda a largura */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+.botao-editar, .botao-excluir, .botao-cadastrar {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.botao-editar {
+    background-color: #28a745; /* Verde */
+}
+
+input[type="submit"].botao-excluir {
+    background-color: #dc3545; /* Vermelho */
+}
+
+.botao-cadastrar {
+    background-color: #007bff; /* Azul */
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+.botao-editar:hover {
+    background-color: #218838; /* Verde mais escuro */
+}
+
+input[type="submit"].botao-excluir:hover {
+    background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+}
+
+.botao-cadastrar:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+}

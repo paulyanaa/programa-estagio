@@ -16,7 +16,7 @@ class EmpresaModel
     private $sTelefone;
 
     public function __construct(
-        string $iId,
+        ?int $iId,
         string $sNome,
         string $sEmail,
         string $sCnpj,
@@ -39,7 +39,7 @@ class EmpresaModel
         $this->sTelefone = $sTelefone;
     }
 
-    public function getIId(): int
+    public function getIId(): ?int
     {
         return $this->iId;
     }

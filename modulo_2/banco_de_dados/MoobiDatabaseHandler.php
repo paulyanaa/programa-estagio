@@ -21,7 +21,7 @@ class MoobiDatabaseHandler {
             if($aParametros != [] ){
                 $PDOStatement = $this->pdo->prepare($sSql);
                 foreach ($aParametros as $sParametro => &$sValor) {
-                    $PDOStatement->bindParam($sParametro, $sValor);
+                    $PDOStatement->bindValue($sParametro, $sValor);
                 }
                 $PDOStatement->execute();
                 return $PDOStatement->fetchAll(PDO::FETCH_ASSOC);

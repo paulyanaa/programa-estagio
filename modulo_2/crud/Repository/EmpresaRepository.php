@@ -22,27 +22,28 @@ class EmpresaRepository
         }, $aEmpresas);
         return $aDadosEmpresas;
     }
-    public function buscaEmpresa($id): EmpresaModel
+    public function buscaEmpresa($id)
     {
-        $sSql = "SELECT * FROM empresas WHERE id_empresa = $id";
-        $aEmpresas = $this->oBancoEmpresa->query($sSql);
+        $sSql = "SELECT * FROM empresas WHERE id = ?";
+        $sParametro = [1 => $id];
+        $aEmpresa = $this->oBancoEmpresa->query($sSql, $sParametro);
 
-        $oEmpresa = $this->formarObjeto($aEmpresas);
-        return $oEmpresa;
+//        $oEmpresa = $this->formarObjeto($aEmpresa);
+
+        return $aEmpresa;
     }
     public function insereEmpresa(EmpresaModel $empresa):void{
-        $sSql = "INSERT INTO empresas (id, nome, email, cnpj, cep, estado, cidade, bairro, logradouro, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sSql = "INSERT INTO empresas (nome, email, cnpj, cep, estado, cidade, bairro, logradouro, telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $aParametros = [
-            1 => $empresa->getIId(),
-            2 => $empresa->getSNome(),
-            3 => $empresa->getSEmail(),
-            4 => $empresa->getSCnpj(),
-            5 => $empresa->getSCep(),
-            6 => $empresa->getSEstado(),
-            7 => $empresa->getSCidade(),
-            8 => $empresa->getSBairro(),
-            9 => $empresa->getSLogradouro(),
-            10 => $empresa->getSTelefone()
+            1 => $empresa->getSNome(),
+            2 => $empresa->getSEmail(),
+            3 => $empresa->getSCnpj(),
+            4 => $empresa->getSCep(),
+            5 => $empresa->getSEstado(),
+            6 => $empresa->getSCidade(),
+            7 => $empresa->getSBairro(),
+            8 => $empresa->getSLogradouro(),
+            9 => $empresa->getSTelefone()
         ];
 
         $this->oBancoEmpresa->startTransaction();
@@ -62,9 +63,8 @@ class EmpresaRepository
     }
 
     public function atualizaEmpresa(EmpresaModel $empresa):void{
-        $sSql = "UPDATE produtos SET nome = ?, email = ?, cnpj = ?, cep = ?, estado = ?, cidade = ?, bairro = ?, logradouro = ?, telefone = ? WHERE id = ?";
+        $sSql = "UPDATE empresas SET nome = ?, email = ?, cnpj = ?, cep = ?, estado = ?, cidade = ?, bairro = ?, logradouro = ?, telefone = ? WHERE id = ?";
         $aParametros = [
-
             1 => $empresa->getSNome(),
             2 => $empresa->getSEmail(),
             3 => $empresa->getSCnpj(),
@@ -82,9 +82,9 @@ class EmpresaRepository
 
     }
 
-    private function formarObjeto($empresa):EmpresaModel
+    private function formarObjeto(array $empresa):EmpresaModel
     {
-        $empresaObjeto = new EmpresaModel(
+        return new EmpresaModel(
             $empresa['id'],
             $empresa['nome'],
             $empresa['email'],
@@ -96,8 +96,6 @@ class EmpresaRepository
             $empresa['logradouro'],
             $empresa['telefone']
         );
-
-        return $empresaObjeto;
     }
 
 
