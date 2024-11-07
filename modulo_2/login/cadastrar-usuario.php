@@ -9,6 +9,9 @@ if (!isset($_SESSION['username'])) {
     header("Location: login-usuario.php");
     exit();
 }
+$sNome = $_SESSION['username'];
+$tHoraAtual = (new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo')))->format('H:i:s');
+
 if(isset($_POST['cadastro'])){
     $oUsuario = new UsuarioModel(
         null,
@@ -21,7 +24,7 @@ if(isset($_POST['cadastro'])){
     $oUsuarioRepository = new UsuarioRepository();
     $oUsuarioRepository->cadastrarUsuario($oUsuario);
 
-    header('location: lista-usuarios.php');
+    header('location: listar-usuarios.php');
 }
 
 ?>
@@ -42,7 +45,9 @@ if(isset($_POST['cadastro'])){
 </head>
 <body>
 <main>
-    <h1>Cadastro de Empresas</h1>
+    <h3><?=$tHoraAtual?></h3>
+    <h1>Cadastro de Usuários</h1>
+    <h2>Olá, <?=ucfirst($sNome)?>!</h2>
     <section class="container-form">
         <form method="post" enctype = "multipart/form-data">
 
@@ -51,7 +56,7 @@ if(isset($_POST['cadastro'])){
             <input type="text" id="username" name="username" placeholder="Digite o usuário" required>
 
             <label for="senha">Senha</label>
-            <input type="text" id="senha" name="text" placeholder="Digite a senha" required>
+            <input type="text" id="senha" name="senha" placeholder="Digite a senha" required>
 
             <div class="container-radio">
                 <div>

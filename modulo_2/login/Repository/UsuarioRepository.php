@@ -11,7 +11,7 @@ class UsuarioRepository
 
     public function cadastrarUsuario(UsuarioModel $oUsuario){
 
-        $sSenhaCriptografada = password_hash($oUsuario->getSenha(), PASSWORD_DEFAULT);
+        $sSenhaCriptografada = password_hash($oUsuario->getSSenha(), PASSWORD_DEFAULT);
 
         $sSql = "INSERT INTO usuarios (username, senha, tipo) VALUES (?,?, ?)";
         $sParametros = [
@@ -22,6 +22,25 @@ class UsuarioRepository
         $this->oBancoUsuarios->startTransaction();
         $this->oBancoUsuarios->execute($sSql, $sParametros);
         $this->oBancoUsuarios->endTransaction();
+    }
+    public function buscarUsuarios():array{
+        $sSql = "SELECT * FROM usuarios";
+        $aUsuario = $this->oBancoUsuarios->query($sSql);
+        return $aUsuario;
+    }
+
+    public function buscarUsuarioAdmin():array{
+        $sSql = "SELECT * FROM usuarios WHERE tipo = ?";
+        $sParametros = [1 => 'administrador'];
+        $aUsuario = $this->oBancoUsuarios->query($sSql, $sParametros);
+        return $aUsuario;
+    }
+
+    public function buscarUsuarioComum():array{
+        $sSql = "SELECT * FROM usuarios WHERE tipo = ?";
+        $sParametros = [1 => 'comum'];
+        $aUsuario = $this->oBancoUsuarios->query($sSql, $sParametros);
+        return $aUsuario;
     }
 
     public function buscarUsuarioPorUsername($sUsername):array{

@@ -1,0 +1,300 @@
+/* styles.css */
+
+/* Reseta e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Estilos Gerais do Formulário */
+.container-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3a8ef7;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3a8ef7;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #316ecc;
+}
+
+/* Estilos para a Página Principal do Administrador e Usuário Comum */
+main {
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 15px 0;
+    color: #2d3748;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #718096;
+    margin-bottom: 15px;
+}
+
+.container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+/* Botões Específicos */
+.botao-cadastrar-usuario {
+    background-color: #3b82f6;
+}
+
+.botao-cadastrar-usuario:hover {
+    background-color: #2563eb;
+}
+
+.botao-listar-usuarios {
+    background-color: #10b981;
+}
+
+.botao-listar-usuarios:hover {
+    background-color: #059669;
+}
+
+.botao-sair {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #f87171;
+}
+
+.botao-sair:hover {
+    background-color: #ef4444;
+}
+
+/* Estilos para Tabela de Usuários */
+.container-admins, .container-comuns {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f3f4f6;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+td {
+    background-color: #ffffff;
+    color: #333;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9fafb;
+}
+
+.container-usuarios-admins, .container-usuarios-comuns {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Estilos específicos para a Página de Cadastro de Usuários */
+.container-radio {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.container-radio div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="radio"] {
+    accent-color: #3a8ef7;
+    transform: scale(1.2);
+}
+
+.botao-cadastrar {
+    width: 100%;
+    background-color: #10b981;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+.botao-cadastrar:hover {
+    background-color: #059669;
+}
+
+.botao-voltar {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #a0aec0;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.botao-voltar:hover {
+    background-color: #718096;
+}
+
+/* Estilos específicos para a Página de Listagem de Usuários */
+h1, h2 {
+    color: #2d3748;
+}
+
+.container-usuarios-admins, .container-usuarios-comuns {
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.container-admins, .container-comuns {
+    margin-bottom: 20px;
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.botao-sair {
+    margin-top: 20px;
+    background-color: #e53e3e;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.botao-sair:hover {
+    background-color: #c53030;
+}

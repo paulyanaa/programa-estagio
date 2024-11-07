@@ -5,6 +5,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: login-usuario.php");
     exit();
 }
+$sNome = $_SESSION['username'];
+$tHoraAtual = (new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo')))->format('H:i:s');
 
 ?>
 
@@ -24,11 +26,15 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
 <main>
+
     <h1>Principal - Administrador</h1>
+    <h2>Olá, <?=ucfirst($sNome)?>!</h2>
+    <h3><?=$tHoraAtual?></h3>
+
     <section class="container-buttons">
         <a class="botao-cadastrar-usuario" href="cadastrar-usuario.php" >Cadastrar Usuário</a>
         <a class="botao-listar-usuarios" href="listar-usuarios.php" >Listar Usuários</a>
-        <a class="botao-voltar" href="principal-admin.php" >Voltar</a>
+
         <a class="botao-sair" href="logout.php">Sair</a>
 
     </section>
